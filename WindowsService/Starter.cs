@@ -5,6 +5,13 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+    installutil WindowsService.exe
+    net start "_Unified Work Solution"
+    net stop  "_Unified Work Solution"
+    installutil /u WindowsService.exe
+ */
+
 namespace WindowsService
 {
     static class Starter
@@ -17,7 +24,7 @@ namespace WindowsService
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[] 
             { 
-                // new Windows Service() 
+                new ServiceHosts()
             };
             ServiceBase.Run(ServicesToRun);
         }

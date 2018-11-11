@@ -49,6 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Installer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ServiceHost.cs" />
+    <Compile Include="ServiceHosts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ServiceHosts.Designer.cs">
+      <DependentUpon>ServiceHosts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Starter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

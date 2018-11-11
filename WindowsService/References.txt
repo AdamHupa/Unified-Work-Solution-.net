@@ -1,1 +1,18 @@
 ﻿
+Added References:
+
+	ServiceLibrary
+	System.Configuration.Install
+	System.ServiceModel
+	System.ServiceProcess
+	
+
+Added Service References:
+
+	
+
+
+Installed NuGet Packages:
+
+	Install-Package NLog -Version 4.4.13
+	

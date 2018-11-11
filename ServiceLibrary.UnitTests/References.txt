@@ -1,1 +1,18 @@
 ﻿
+Added References:
+
+	System.Configuration
+	System.Data
+	System.ServiceModel
+
+
+Added Service References:
+
+	
+
+
+Installed NuGet Packages:
+
+	Install-Package Effort.EF6 -Version 1.3.5
+	Install-Package EntityFramework -Version 6.2.0
+	

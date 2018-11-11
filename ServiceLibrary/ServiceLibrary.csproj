@@ -72,6 +72,14 @@
     <Compile Include="Contracts\ILogServiceAsync.cs" />
     <Compile Include="Contracts\Namespaces.cs" />
     <Compile Include="Contracts\To.cs" />
+    <Compile Include="DbModels\Log\CodeFirst\CallSide.cs" />
+    <Compile Include="DbModels\Log\CodeFirst\Context.cs" />
+    <Compile Include="DbModels\Log\CodeFirst\JsonObject.cs" />
+    <Compile Include="DbModels\Log\CodeFirst\LogRecord.cs" />
+    <Compile Include="DbModels\Log\CodeFirst\Message.cs" />
+    <Compile Include="DbModels\Log\CodeFirst\Source.cs" />
+    <Compile Include="DbModels\Log\Extensions.cs" />
+    <Compile Include="DbModels\Log\NLogLevel.cs" />
     <Compile Include="DLLStartupObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LogReceiverService.cs" />
@@ -85,7 +93,13 @@
     <Content Include="Hosts\LogReceiverServiceHost.svc" />
     <Content Include="References.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DbModels\Helpers\" />
+    <Folder Include="DbModels\Log\Helpers\" />
+    <Folder Include="DbModels\Log\Migrations\" />
+    <Folder Include="DbModels\Log\Sql\Create\" />
+    <Folder Include="DbModels\Log\Sql\Drop\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <VSToolsPath Condition="'$(VSToolsPath)' == '' and '$(VisualStudioVersion)' != '' and '$(VisualStudioVersion)' != '11.0'">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -72,14 +72,33 @@
     <Compile Include="Contracts\ILogServiceAsync.cs" />
     <Compile Include="Contracts\Namespaces.cs" />
     <Compile Include="Contracts\To.cs" />
+    <Compile Include="DbModels\Helpers\BasicSqlServerMigrationSqlGenerator.cs" />
+    <Compile Include="DbModels\Helpers\CascadeDeleteAttribute.cs" />
+    <Compile Include="DbModels\Helpers\CascadeDeleteAttributeConvention.cs" />
+    <Compile Include="DbModels\Helpers\DefaultValueAttribute.cs" />
+    <Compile Include="DbModels\Helpers\DefaultValueSqlServerMigrationSqlGenerator.cs" />
+    <Compile Include="DbModels\Helpers\IUniversalTimestamp.cs" />
+    <Compile Include="DbModels\Helpers\Trigger.cs" />
     <Compile Include="DbModels\Log\CodeFirst\CallSide.cs" />
     <Compile Include="DbModels\Log\CodeFirst\Context.cs" />
     <Compile Include="DbModels\Log\CodeFirst\JsonObject.cs" />
     <Compile Include="DbModels\Log\CodeFirst\LogRecord.cs" />
     <Compile Include="DbModels\Log\CodeFirst\Message.cs" />
     <Compile Include="DbModels\Log\CodeFirst\Source.cs" />
+    <Compile Include="DbModels\Log\EventLog.cs" />
     <Compile Include="DbModels\Log\Extensions.cs" />
     <Compile Include="DbModels\Log\NLogLevel.cs" />
+    <Compile Include="DbModels\Log\Sql\CreateResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\Log\Sql\DropResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DropResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\Log\To.cs" />
     <Compile Include="DLLStartupObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LogReceiverService.cs" />
@@ -94,11 +113,20 @@
     <Content Include="References.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DbModels\Helpers\" />
     <Folder Include="DbModels\Log\Helpers\" />
     <Folder Include="DbModels\Log\Migrations\" />
     <Folder Include="DbModels\Log\Sql\Create\" />
     <Folder Include="DbModels\Log\Sql\Drop\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DbModels\Log\Sql\CreateResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DbModels\Log\Sql\DropResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DropResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

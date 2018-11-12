@@ -99,8 +99,14 @@
       <DependentUpon>DropResources.resx</DependentUpon>
     </Compile>
     <Compile Include="DbModels\Log\To.cs" />
+    <Compile Include="DependencyInjection\ObjectFactory.cs" />
+    <Compile Include="DependencyInjection\ServiceBehavior.cs" />
+    <Compile Include="DependencyInjection\ServiceBehaviorAttribute.cs" />
+    <Compile Include="DependencyInjection\ServiceHost.cs" />
+    <Compile Include="DependencyInjection\ServiceInstanceProvider.cs" />
     <Compile Include="DLLStartupObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceLogics\ILogServiceLogic.cs" />
     <Compile Include="Services\LogReceiverService.cs" />
     <Compile Include="Tools\ClientAddress.cs" />
   </ItemGroup>

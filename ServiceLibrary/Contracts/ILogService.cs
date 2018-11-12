@@ -13,6 +13,6 @@ namespace ServiceLibrary.Contracts
     {
         [OperationContract]
         //[FaultContract(typeof(Contracts.Data.ServiceFault))]
-        void ReceiveLogS();
+        void ReceiveLogS(DbModels.Log.EventLog eventLog);
     }
 }

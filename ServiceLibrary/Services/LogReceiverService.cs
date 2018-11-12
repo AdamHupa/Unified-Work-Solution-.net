@@ -13,22 +13,47 @@ using System.Xml.Linq;
 namespace ServiceLibrary.Services
 {
     //[ServiceBehavior(Namespace = Namespaces.Logger)]
-    
+    [ServiceLibrary.DependencyInjection.ServiceBehavior]
     public class LogReceiverService : NLog.LogReceiverService.ILogReceiverServer, ILogService, ILogServiceAsync
     {
         private static NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
 
+        private ServiceLogics.ILogServiceLogic _logic = null;
 
-        public Task ReceiveLogA()
+
+        //public LogReceiverService() { }
+
+        public LogReceiverService(ServiceLogics.ILogServiceLogic serviceLogic)
         {
-            throw new NotImplementedException();
+            if (serviceLogic == null)
+                throw new ArgumentNullException("serviceLogic");
+            _logic = serviceLogic;
         }
 
-        public void ReceiveLogS()
+
+        #region ILogService & ILogServiceAsync Members
+
+        public async Task ReceiveLogA(DbModels.Log.EventLog eventLog)
         {
-            throw new NotImplementedException();
+            if (eventLog.Address == String.Empty)
+                eventLog.Address = Tools.ClientAddress.DeducedClientAddress();
+            else
+                eventLog.Address = String.Format("{0}; {1}", Tools.ClientAddress.DeducedClientAddress(), eventLog.Address);
+
+            await _logic.ReceiveLogA(eventLog);
         }
 
+        public void ReceiveLogS(DbModels.Log.EventLog eventLog)
+        {
+            if (eventLog.Address == String.Empty)
+                eventLog.Address = Tools.ClientAddress.DeducedClientAddress();
+            else
+                eventLog.Address = String.Format("{0}; {1}", Tools.ClientAddress.DeducedClientAddress(), eventLog.Address);
+
+            _logic.ReceiveLogS(eventLog);
+        }
+
+        #endregion // ILogService & ILogServiceAsync Members
 
         #region ILogReceiverServer Members
 

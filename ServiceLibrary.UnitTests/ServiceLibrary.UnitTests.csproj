@@ -68,7 +68,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AssemblyInitialize.cs" />
+    <Compile Include="ContextProvider.cs" />
+    <Compile Include="LogServiceLogicTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\BaseTest.cs" />
+    <Compile Include="Tools\EffortProviderFactory.cs" />
+    <Compile Include="Tools\RobustContextProviderState Pack.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ServiceLibrary\ServiceLibrary.csproj">

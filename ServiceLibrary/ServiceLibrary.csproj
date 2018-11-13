@@ -127,6 +127,7 @@
     <Compile Include="ServiceLogics\ServiceLogic.cs" />
     <Compile Include="Services\LogReceiverService.cs" />
     <Compile Include="Tools\ClientAddress.cs" />
+    <Compile Include="Tools\CyclicCacheRegistry.cs" />
     <Compile Include="Tools\GlobalLogger.cs" />
     <Compile Include="Tools\PartialSerializationContractResolver.cs" />
     <Compile Include="Tools\RecursiveExceptionLayoutRenderer.cs" />

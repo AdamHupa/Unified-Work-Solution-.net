@@ -24,7 +24,7 @@ namespace WindowsService
             }
 
             serviceHost = new ServiceHost(typeof(TService));
-            
+            //serviceHost = new ServiceLibrary.DependencyInjection.ServiceHost(typeof(TService));
             serviceHost.Open();
         }
 

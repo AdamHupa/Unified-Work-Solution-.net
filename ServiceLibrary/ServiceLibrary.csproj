@@ -121,10 +121,13 @@
     <Compile Include="DependencyInjection\ShellCommand.cs" />
     <Compile Include="DLLStartupObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceInternalLogic.cs" />
     <Compile Include="ServiceLogics\ILogServiceLogic.cs" />
     <Compile Include="ServiceLogics\LogServiceLogic.cs" />
+    <Compile Include="ServiceLogics\ServiceLogic.cs" />
     <Compile Include="Services\LogReceiverService.cs" />
     <Compile Include="Tools\ClientAddress.cs" />
+    <Compile Include="Tools\GlobalLogger.cs" />
     <Compile Include="Tools\PartialSerializationContractResolver.cs" />
     <Compile Include="Tools\RecursiveExceptionLayoutRenderer.cs" />
   </ItemGroup>

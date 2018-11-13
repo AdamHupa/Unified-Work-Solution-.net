@@ -1,4 +1,30 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib" >
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Client Application;component/Resources/Localizations/Localization.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <sys:String x:Key="LocalizationDictionaryName" >Localization.pl-PL</sys:String>
+    
+    
+    <!--// global //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+    
+    <sys:String x:Key="MainWindow_Title" >Aplikacja kliencka PL</sys:String>
+    
+    
+    <!--// GenericControls //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+    
+    <sys:String x:Key="DragPopup_ToolTip" >Przesuń popup.</sys:String>
+    <sys:String x:Key="ResizePopup_ToolTip" >Zmień rozmiar.</sys:String>
+    
+    
+    <!--//  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+    
+    
+    
+    
+    <!--<sys:String x:Key="" ></sys:String>-->
     
 </ResourceDictionary>

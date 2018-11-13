@@ -21,6 +21,10 @@ namespace WindowsService
         /// </summary>
         static void Main()
         {
+            NLog.LayoutRenderers.LayoutRenderer.Register(ServiceLibrary.Tools.RecursiveExceptionLayoutRenderer.DefaultName,
+                                                         typeof(ServiceLibrary.Tools.RecursiveExceptionLayoutRenderer));
+
+
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[] 
             { 

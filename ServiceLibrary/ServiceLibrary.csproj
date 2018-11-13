@@ -125,6 +125,8 @@
     <Compile Include="ServiceLogics\LogServiceLogic.cs" />
     <Compile Include="Services\LogReceiverService.cs" />
     <Compile Include="Tools\ClientAddress.cs" />
+    <Compile Include="Tools\PartialSerializationContractResolver.cs" />
+    <Compile Include="Tools\RecursiveExceptionLayoutRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

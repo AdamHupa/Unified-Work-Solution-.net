@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsService", "WindowsSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLibrary.UnitTests", "ServiceLibrary.UnitTests\ServiceLibrary.UnitTests.csproj", "{D0E457CB-EFA5-474E-824F-CAE8B8A934BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client Application", "Client Application\Client Application.csproj", "{7B6D6C25-545B-4605-BC66-7B04C7CD5D5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client Application.UnitTests", "Client Application.UnitTests\Client Application.UnitTests.csproj", "{71FA1CDB-60A5-42A0-8B87-A1D0EA3F453E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{D0E457CB-EFA5-474E-824F-CAE8B8A934BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0E457CB-EFA5-474E-824F-CAE8B8A934BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0E457CB-EFA5-474E-824F-CAE8B8A934BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B6D6C25-545B-4605-BC66-7B04C7CD5D5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B6D6C25-545B-4605-BC66-7B04C7CD5D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B6D6C25-545B-4605-BC66-7B04C7CD5D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B6D6C25-545B-4605-BC66-7B04C7CD5D5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71FA1CDB-60A5-42A0-8B87-A1D0EA3F453E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71FA1CDB-60A5-42A0-8B87-A1D0EA3F453E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71FA1CDB-60A5-42A0-8B87-A1D0EA3F453E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71FA1CDB-60A5-42A0-8B87-A1D0EA3F453E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

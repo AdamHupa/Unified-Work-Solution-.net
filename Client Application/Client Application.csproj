@@ -53,12 +53,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GenericControls\ChessBoardPattern.cs" />
+    <Compile Include="GenericControls\ResourceDictionaries.cs" />
+    <Compile Include="GenericControls\SpeechBubblePopup.cs" />
+    <Compile Include="GenericControls\ToolPopup.cs" />
     <Compile Include="Resources\CultureInvariantResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CultureInvariantResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Localizations\LocalizationDictionaries.cs" />
+    <Page Include="GenericControls\ResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -124,7 +132,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DialogueBox\" />
-    <Folder Include="GenericControls\" />
     <Folder Include="Models\" />
     <Folder Include="Resources\Icons\" />
     <Folder Include="ServiceReferences\" />

@@ -1,0 +1,179 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    
+                    xmlns:generic="clr-namespace:Client_Application.GenericControls"
+                    xmlns:languages="clr-namespace:Client_Application.Resources.Languages"
+                    xmlns:local="clr-namespace:Client_Application"
+                    xmlns:views="clr-namespace:Client_Application.Views" >
+
+    <!--// common resources //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+
+
+    <!--// common templates //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+
+
+    <!--// common styles //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+
+
+    <!--// ChessBoardPattern - custom control //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+
+    <Style x:Key="{x:Static generic:ResourceKeys.ChessBoardPatternBase}" TargetType="{x:Type generic:ChessBoardPattern}" >
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type generic:ChessBoardPattern}" >
+                    <Grid>
+                        <Grid.Resources>
+
+                            <DrawingGroup x:Key="ChessBoardPattern_ChessDrawingGroup" >
+                                <GeometryDrawing Geometry="M5,5 L0,5 0,10 5,10 5,5  10,5  10,0 5,0 Z"
+                                                 Brush="{Binding WhiteSquares, RelativeSource={RelativeSource AncestorType={x:Type generic:ChessBoardPattern}}}" />
+                                <GeometryDrawing Geometry="M0,0 L0,5 0,10 0,5, 10,5 10,10 5,10 5,0 Z"
+                                                 Brush="{Binding BlackSquares, RelativeSource={RelativeSource AncestorType={x:Type generic:ChessBoardPattern}}}" />
+                            </DrawingGroup>
+
+                            <!-- traditional pattern, 8x8 pixel -->
+                            <DrawingBrush x:Key="ChessBoardPattern_Traditional_DrawingBrush" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,16,16"
+                                          Drawing="{DynamicResource ChessBoardPattern_ChessDrawingGroup}"
+                                          RelativeTransform="{Binding TransformBrush, RelativeSource={RelativeSource AncestorType={x:Type generic:ChessBoardPattern}}}" />
+
+                            <!-- centralized pattern, 8x8 pixel -->
+                            <DrawingBrush x:Key="ChessBoardPattern_Centralized_DrawingBrush" TileMode="Tile" ViewportUnits="Absolute" Viewport="4,4,16,16"
+                                          Drawing="{DynamicResource ChessBoardPattern_ChessDrawingGroup}"
+                                          RelativeTransform="{Binding TransformBrush, RelativeSource={RelativeSource AncestorType={x:Type generic:ChessBoardPattern}}}" />
+
+                        </Grid.Resources>
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Setter Property="Background" Value="{DynamicResource ChessBoardPattern_Traditional_DrawingBrush}" />
+                                <Style.Triggers>
+                                    <!-- center -->
+                                    <DataTrigger Binding="{Binding IsCentralized, RelativeSource={RelativeSource AncestorType={x:Type generic:ChessBoardPattern}}}" Value="True" >
+                                        <Setter Property="Background" Value="{DynamicResource ChessBoardPattern_Centralized_DrawingBrush}" />
+                                    </DataTrigger>
+                                    <!-- revert to default, if needed -->
+                                    <DataTrigger Binding="{Binding IsCentralized, RelativeSource={RelativeSource AncestorType={x:Type generic:ChessBoardPattern}}}" Value="False" >
+                                        <Setter Property="Background" Value="{DynamicResource ChessBoardPattern_Traditional_DrawingBrush}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!--// SpeechBubblePopup - custom control //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+
+    <Style x:Key="{x:Static generic:ResourceKeys.SpeechBubblePopupBase}" TargetType="{x:Type generic:SpeechBubblePopup}" x:Shared="False" >
+        <Setter Property="Placement" Value="Right" />
+        <Setter Property="HorizontalOffset" Value="0" />
+        <Setter Property="VerticalOffset" Value="0" />
+        <Setter Property="PopupAnimation" Value="Fade" />
+        <Setter Property="AllowsTransparency" Value="True" />
+        <!--<Setter Property="TextBlockStyle" Value="{StaticResource SpeechBubbleTextBlock}" />-->
+        <Setter Property="Child" >
+            <Setter.Value>
+                <StackPanel x:Name="PART_StackPanel" Orientation="Horizontal" > <!--FlowDirection="find a way to make the binding work" >-->
+
+                    <Polygon x:Name="PART_Polygon" Points="0,4 4,0 4,8" VerticalAlignment="Center"  Stretch="Fill"
+                             Fill="{Binding Background, RelativeSource={RelativeSource AncestorType={x:Type generic:SpeechBubblePopup}}}"
+                             Stroke="{Binding Background, RelativeSource={RelativeSource AncestorType={x:Type generic:SpeechBubblePopup}}}"
+                             StrokeThickness="2"
+                             FlowDirection="{Binding FlowDirectionFromOrigin,
+                             RelativeSource={RelativeSource AncestorType={x:Type generic:SpeechBubblePopup}}}" />
+
+                    <!--<Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" >-->
+                    <Border x:Name="PART_Border" Padding="6,4" CornerRadius="4"
+                            Background="{Binding Background, RelativeSource={RelativeSource AncestorType={x:Type generic:SpeechBubblePopup}}}" >
+                        <TextBlock x:Name="PART_TextBlock" HorizontalAlignment="Center" FontWeight="Bold" FlowDirection="LeftToRight"
+                                   Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type generic:SpeechBubblePopup}}}"
+                                   Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type generic:SpeechBubblePopup}}}" />
+                    </Border>
+
+                </StackPanel>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!--// ToolPopup - custom control //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+
+    <Style x:Key="{x:Static generic:ResourceKeys.DraggablePopupThumbBase}" TargetType="{x:Type Thumb}" >
+        <!--<EventSetter Event="DragDelta" Handler="DraggableThumb_DragDelta" />-->
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Height" Value="5" />
+        <Setter Property="Width" Value="90" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate>
+                    <Path Stretch="Fill" Data="m 0,0 5,5 80,0 5,-5 z" Fill="{TemplateBinding Background}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{x:Static generic:ResourceKeys.ResizablePopupThumbBase}" TargetType="{x:Type Thumb}" >
+        <!--<EventSetter Event="DragDelta" Handler="ResizableThumb_DragDelta" />-->
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Height" Value="12" />
+        <Setter Property="Width" Value="12" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate>
+                    <Path Stretch="Fill" Data="M 0,0 -10,0 -10,-10" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}"
+                          StrokeThickness="{Binding Tag, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{x:Static generic:ResourceKeys.ToolPopupBase}" TargetType="{x:Type generic:ToolPopup}" >
+        <Setter Property="StaysOpen" Value="True" />
+        <Setter Property="Placement" Value="Bottom" />
+        <Setter Property="HorizontalOffset" Value="0" />
+        <Setter Property="VerticalOffset" Value="4" />
+        <Setter Property="PopupAnimation" Value="None" />
+        <Setter Property="AllowsTransparency" Value="True" />
+        <Setter Property="Child" >
+            <Setter.Value>
+                <!--<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" >-->
+                <Border x:Name="PART_PopupBorder" MinHeight="25" MinWidth="150" BorderThickness="1"
+                        BorderBrush="{Binding Background, RelativeSource={RelativeSource AncestorType={x:Type generic:ToolPopup}}}"
+                        Background="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type generic:ToolPopup}}}" >
+                    <Grid>
+                        <ContentPresenter Grid.Row="0" x:Name="PART_ContentPresenter" Margin="0,2,0,0"
+                                Content="{Binding ToolContent, RelativeSource={RelativeSource AncestorType={x:Type generic:ToolPopup}}}" />
+                        <Thumb Grid.Row="0" x:Name="PART_DraggableThumb"
+                               Style="{StaticResource {x:Static generic:ResourceKeys.DraggablePopupThumbBase}}" 
+                               Background="{Binding Background, RelativeSource={RelativeSource AncestorType={x:Type generic:ToolPopup}}}"
+                               ToolTip="{DynamicResource DragPopup_ToolTip}" />
+                        <!--<Thumb Grid.Row="0" x:Name="PART_ResizableThumb"
+                               Style="{StaticResource {x:Static generic:ResourceKeys.ResizablePopupThumbBase}}" 
+                               Background="{Binding Background, RelativeSource={RelativeSource AncestorType={x:Type generic:ToolPopup}}}"
+                               ToolTip="{DynamicResource ResizePopup_ToolTip}" />-->
+                    </Grid>
+                </Border>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!--// specializations //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+
+
+
+
+
+
+
+
+
+
+</ResourceDictionary>

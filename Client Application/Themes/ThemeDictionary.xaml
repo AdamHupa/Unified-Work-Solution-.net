@@ -1,0 +1,86 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    
+                    xmlns:generic="clr-namespace:Client_Application.GenericControls"
+                    xmlns:languages="clr-namespace:Client_Application.Resources.Languages"
+                    xmlns:local="clr-namespace:Client_Application"
+                    xmlns:views="clr-namespace:Client_Application.Views" >
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Client Application;component/GenericControls/ResourceDictionary.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    
+    <!--// common resources //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+    
+    <SolidColorBrush x:Key="DarkGrayBrush" Color="DarkGray" Opacity="1.0" />
+    <SolidColorBrush x:Key="GrayBrush" Color="Gray" Opacity="1.0" />
+    <SolidColorBrush x:Key="SeparatorBrush" Color="Red" Opacity="0.5" />
+    
+    
+    <!--// common templates //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+    
+    <ControlTemplate x:Key="ValidationErrorTemplate" >
+        <!--<DockPanel  ToolTip="{Binding ElementName=ErrorAdorner, Path=AdornedElement.(Validation.Errors).CurrentItem.ErrorContent}">
+            <TextBlock DockPanel.Dock="Left" Foreground="Red" Text="! " />
+            <AdornedElementPlaceholder x:Name="ErrorAdorner" />
+        </DockPanel>-->
+        
+        <Grid>
+            <Border x:Name="PART_ValidationErrorBorder" IsHitTestVisible="False"
+                                    Background="#11FF0000" BorderBrush="#FFCB2E2E" BorderThickness="1" />
+            <AdornedElementPlaceholder x:Name="PART_ValidationErrorAdorner" />
+            
+            <!--Background="#FFCB2E2E" Foreground="White"-->
+            <generic:SpeechBubblePopup
+                                   PlacementTarget="{Binding ElementName=PART_ValidationErrorBorder}"
+                                   IsOpen="{Binding ElementName=PART_ValidationErrorAdorner, Path=AdornedElement.IsMouseOver, Mode=OneWay}"
+                                   Text="{Binding ElementName=PART_ValidationErrorAdorner, Path=AdornedElement.(Validation.Errors).CurrentItem.ErrorContent}" />
+        </Grid>
+    </ControlTemplate>
+    
+    <!--// common styles //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+    
+    <Style TargetType="{x:Type generic:ChessBoardPattern}" BasedOn="{StaticResource {x:Static generic:ResourceKeys.ChessBoardPatternBase}}" >
+        <Setter Property="IsCentralized" Value="False" />
+        <Setter Property="TransformBrush" >
+            <Setter.Value>
+                <TranslateTransform X="0.5" Y="0.5" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BlackSquares" Value="{StaticResource GrayBrush}" />
+        <Setter Property="WhiteSquares" Value="{StaticResource DarkGrayBrush}" />
+    </Style>
+    
+    <Style TargetType="{x:Type generic:ToolPopup}" BasedOn="{StaticResource {x:Static generic:ResourceKeys.ToolPopupBase}}" >
+        
+    </Style>
+    
+    <Style TargetType="{x:Type generic:SpeechBubblePopup}" BasedOn="{StaticResource {x:Static generic:ResourceKeys.SpeechBubblePopupBase}}" x:Shared="False" >
+        <Setter Property="Background" Value="LightGreen" />
+        <Setter Property="Foreground" Value="Blue" />
+    </Style>
+    
+    
+    <Style TargetType="{x:Type TextBox}" >
+        <Setter Property="Validation.ErrorTemplate" Value="{StaticResource ValidationErrorTemplate}" />
+        <!--<Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="ToolTip"
+                        Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}"/>
+            </Trigger>
+        </Style.Triggers>-->
+    </Style>
+    
+    <!--// <name> - custom control //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+    
+    
+    <!--// specializations //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+    
+    
+    <!--//  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+    
+    
+    
+    
+</ResourceDictionary>

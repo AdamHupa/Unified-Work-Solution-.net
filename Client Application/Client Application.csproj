@@ -73,6 +73,7 @@
     <Compile Include="GenericControls\ResourceDictionaries.cs" />
     <Compile Include="GenericControls\SpeechBubblePopup.cs" />
     <Compile Include="GenericControls\ToolPopup.cs" />
+    <Compile Include="Models\Configuration\ModelAutofacRegistry.cs" />
     <Compile Include="Resources\CultureInvariantResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -82,7 +83,10 @@
     <Compile Include="Themes\ThemeDictionaries.cs" />
     <Compile Include="Tools\BindableBase.cs" />
     <Compile Include="Tools\ParallellyValidatableBase.cs" />
+    <Compile Include="Tools\SpecialisedLocator.cs" />
     <Compile Include="Tools\ValidatableBase.cs" />
+    <Compile Include="Tools\ViewModelLocator.cs" />
+    <Compile Include="ViewModels\Configuration\ViewModelAutofacRegistry.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
@@ -165,7 +169,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DialogueBox\" />
-    <Folder Include="Models\" />
     <Folder Include="Resources\Icons\" />
     <Folder Include="ServiceReferences\" />
   </ItemGroup>

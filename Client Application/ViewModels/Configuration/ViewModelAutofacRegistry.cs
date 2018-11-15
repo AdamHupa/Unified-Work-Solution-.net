@@ -14,7 +14,9 @@ namespace Client_Application.ViewModels.Configuration
     {
         protected override void Load(ContainerBuilder builder)
         {
-            
+            builder.RegisterType<MainWindowViewModel>()
+                   .AsSelf()
+                   .InstancePerDependency();
 
 
             base.Load(builder);

@@ -1,1 +1,20 @@
 ﻿
+Added References:
+
+	System.ComponentModel.DataAnnotations
+	System.Runtime.Serialization
+	System.ServiceModel
+
+
+Added Service References:
+
+	
+
+
+Installed NuGet Packages:
+
+	Install-Package Autofac -Version 4.8.1
+	Install-Package NLog -Version 4.4.13
+	Install-Package NLog.StructuredLogging.Json -Version 1.0.120
+	
+	

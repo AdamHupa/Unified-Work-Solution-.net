@@ -137,13 +137,22 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DbModels\Log\Sql\ClearAll.sql.sql" />
+    <Content Include="DbModels\Log\Sql\Create\fn_select_eventlog.sql.sql" />
+    <Content Include="DbModels\Log\Sql\Create\fn_select_eventlog_context.sql.sql" />
+    <Content Include="DbModels\Log\Sql\Create\usp_insert_eventlog.sql.sql" />
+    <Content Include="DbModels\Log\Sql\Create\usp_insert_eventlog_context.sql.sql" />
+    <Content Include="DbModels\Log\Sql\Create\vw_sourceaddresses.sql.sql" />
+    <Content Include="DbModels\Log\Sql\Drop\vw_sourceaddresses.sql.sql" />
+    <Content Include="DbModels\Log\Sql\Drop\usp_insert_eventlog_context.sql.sql" />
+    <Content Include="DbModels\Log\Sql\Drop\usp_insert_eventlog.sql.sql" />
+    <Content Include="DbModels\Log\Sql\Drop\fn_select_eventlog_context.sql.sql" />
+    <Content Include="DbModels\Log\Sql\Drop\fn_select_eventlog.sql.sql" />
     <Content Include="Hosts\LogReceiverServiceHost.svc" />
     <Content Include="References.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DbModels\Log\Migrations\" />
-    <Folder Include="DbModels\Log\Sql\Create\" />
-    <Folder Include="DbModels\Log\Sql\Drop\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DbModels\Log\Sql\CreateResources.resx">

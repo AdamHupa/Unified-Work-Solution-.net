@@ -1,0 +1,1 @@
+DROP PROCEDURE Log.usp_insert_eventlog;

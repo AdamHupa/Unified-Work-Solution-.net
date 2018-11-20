@@ -94,6 +94,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DbModels\Log\LogDbContextExtensions.cs" />
+    <Compile Include="DbModels\Log\Migrations\201811192356097_Start.cs" />
+    <Compile Include="DbModels\Log\Migrations\201811192356097_Start.Designer.cs">
+      <DependentUpon>201811192356097_Start.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\Log\Migrations\201811200003192_ManualInitialization.cs" />
+    <Compile Include="DbModels\Log\Migrations\201811200003192_ManualInitialization.Designer.cs">
+      <DependentUpon>201811200003192_ManualInitialization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\Log\Migrations\Configuration.cs" />
     <Compile Include="DbModels\Log\NLogLevel.cs" />
     <Compile Include="DbModels\Log\Sql\CreateResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -121,6 +130,11 @@
     <Compile Include="DependencyInjection\ShellCommand.cs" />
     <Compile Include="DLLStartupObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="ServiceInternalLogic.cs" />
     <Compile Include="ServiceLogics\ILogServiceLogic.cs" />
     <Compile Include="ServiceLogics\LogServiceLogic.cs" />
@@ -135,26 +149,34 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DbModels\Log\Sql\ClearAll.sql.sql" />
-    <Content Include="DbModels\Log\Sql\Create\fn_select_eventlog.sql.sql" />
-    <Content Include="DbModels\Log\Sql\Create\fn_select_eventlog_context.sql.sql" />
-    <Content Include="DbModels\Log\Sql\Create\usp_insert_eventlog.sql.sql" />
-    <Content Include="DbModels\Log\Sql\Create\usp_insert_eventlog_context.sql.sql" />
-    <Content Include="DbModels\Log\Sql\Create\vw_sourceaddresses.sql.sql" />
-    <Content Include="DbModels\Log\Sql\Drop\vw_sourceaddresses.sql.sql" />
-    <Content Include="DbModels\Log\Sql\Drop\usp_insert_eventlog_context.sql.sql" />
-    <Content Include="DbModels\Log\Sql\Drop\usp_insert_eventlog.sql.sql" />
-    <Content Include="DbModels\Log\Sql\Drop\fn_select_eventlog_context.sql.sql" />
-    <Content Include="DbModels\Log\Sql\Drop\fn_select_eventlog.sql.sql" />
+    <Content Include="DbModels\Log\Sql\ClearAll.sql" />
+    <Content Include="DbModels\Log\Sql\Create\fn_select_eventlog.sql" />
+    <Content Include="DbModels\Log\Sql\Create\fn_select_eventlog_context.sql" />
+    <Content Include="DbModels\Log\Sql\Create\usp_insert_eventlog.sql" />
+    <Content Include="DbModels\Log\Sql\Create\usp_insert_eventlog_context.sql" />
+    <Content Include="DbModels\Log\Sql\Create\vw_sourceaddresses.sql" />
+    <Content Include="DbModels\Log\Sql\Drop\vw_sourceaddresses.sql" />
+    <Content Include="DbModels\Log\Sql\Drop\usp_insert_eventlog_context.sql" />
+    <Content Include="DbModels\Log\Sql\Drop\usp_insert_eventlog.sql" />
+    <Content Include="DbModels\Log\Sql\Drop\fn_select_eventlog_context.sql" />
+    <Content Include="DbModels\Log\Sql\Drop\fn_select_eventlog.sql" />
     <Content Include="Hosts\LogReceiverServiceHost.svc" />
     <Content Include="References.txt" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="DbModels\Log\Migrations\" />
-  </ItemGroup>
-  <ItemGroup>
+    <EmbeddedResource Include="DbModels\Log\Migrations\201811192356097_Start.resx">
+      <DependentUpon>201811192356097_Start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DbModels\Log\Migrations\201811200003192_ManualInitialization.resx">
+      <DependentUpon>201811200003192_ManualInitialization.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DbModels\Log\Sql\CreateResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CreateResources.Designer.cs</LastGenOutput>

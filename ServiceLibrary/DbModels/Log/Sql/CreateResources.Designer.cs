@@ -63,35 +63,6 @@ namespace ServiceLibrary.DbModels.Log.Sql {
         /// <summary>
         ///   Looks up a localized string similar to /* author: ahupa@polsl.pl, 2018 */
         ///
-        ///CREATE FUNCTION Log.fn_select_eventlog_context
-        ///(
-        ///	@id INT
-        ///)
-        ///--WITH EXECUTE AS CALLER 
-        ///RETURNS TABLE
-        ///AS
-        ///RETURN
-        ///(
-        ///	/* Using Common Table Expressions to achieve single query implementation required for
-        ///	-- inline functions and to reduces estimated subtree cost comparing to traditional join approach. */
-        ///
-        ///	WITH
-        ///	Log_LogRecords AS
-        ///	(
-        ///		SELECT * FROM Log.LogRecords WHERE Id = @id
-        ///	)
-        ///	SELECT lr.TimeStamp, lr.Level, lr.Logger,
-        ///		   s.Address, s.MachineName, s.W [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string fn_select_eventlog_context_sql {
-            get {
-                return ResourceManager.GetString("fn_select_eventlog_context_sql", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to /* author: ahupa@polsl.pl, 2018 */
-        ///
         ///CREATE FUNCTION Log.fn_select_eventlog
         ///(
         ///	@id INT
@@ -112,9 +83,58 @@ namespace ServiceLibrary.DbModels.Log.Sql {
         ///	SELECT lr.TimeStamp, lr.Level, lr.Logger,
         ///		   s.Address, s.MachineName, s.WindowsId [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string fn_select_eventlog_sql {
+        internal static string fn_select_eventlog {
             get {
-                return ResourceManager.GetString("fn_select_eventlog_sql", resourceCulture);
+                return ResourceManager.GetString("fn_select_eventlog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /* author: ahupa@polsl.pl, 2018 */
+        ///
+        ///CREATE FUNCTION Log.fn_select_eventlog_context
+        ///(
+        ///	@id INT
+        ///)
+        ///--WITH EXECUTE AS CALLER 
+        ///RETURNS TABLE
+        ///AS
+        ///RETURN
+        ///(
+        ///	/* Using Common Table Expressions to achieve single query implementation required for
+        ///	-- inline functions and to reduces estimated subtree cost comparing to traditional join approach. */
+        ///
+        ///	WITH
+        ///	Log_LogRecords AS
+        ///	(
+        ///		SELECT * FROM Log.LogRecords WHERE Id = @id
+        ///	)
+        ///	SELECT lr.TimeStamp, lr.Level, lr.Logger,
+        ///		   s.Address, s.MachineName, s.W [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string fn_select_eventlog_context {
+            get {
+                return ResourceManager.GetString("fn_select_eventlog_context", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /* author: ahupa@polsl.pl, 2018 */
+        ///
+        ///CREATE PROCEDURE Log.usp_insert_eventlog
+        ///(
+        ///	@time_stamp DATETIME2(7), @level TINYINT, @logger NVARCHAR(64),
+        ///	@address NVARCHAR(80), @machine_name NVARCHAR(50), @windows_id NVARCHAR(50),
+        ///	@call_side NVARCHAR(128), @line_number INT,
+        ///	@message NVARCHAR(256) = NULL, @exception NVARCHAR(MAX) = NULL, @json_object NVARCHAR(MAX) = NULL
+        ///)
+        ///--WITH EXECUTE AS OWNER, SCHEMABINDING, NATIVE_COMPILATION
+        ///AS
+        ///BEGIN --ATOMIC WITH (TRANSACTION ISOLATION LEVEL = SNAPSHOT, LANGUAGE = [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string usp_insert_eventlog {
+            get {
+                return ResourceManager.GetString("usp_insert_eventlog", resourceCulture);
             }
         }
         
@@ -133,29 +153,9 @@ namespace ServiceLibrary.DbModels.Log.Sql {
         ///AS
         ///BEG [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string usp_insert_eventlog_context_sql {
+        internal static string usp_insert_eventlog_context {
             get {
-                return ResourceManager.GetString("usp_insert_eventlog_context_sql", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to /* author: ahupa@polsl.pl, 2018 */
-        ///
-        ///CREATE PROCEDURE Log.usp_insert_eventlog
-        ///(
-        ///	@time_stamp DATETIME2(7), @level TINYINT, @logger NVARCHAR(64),
-        ///	@address NVARCHAR(80), @machine_name NVARCHAR(50), @windows_id NVARCHAR(50),
-        ///	@call_side NVARCHAR(128), @line_number INT,
-        ///	@message NVARCHAR(256) = NULL, @exception NVARCHAR(MAX) = NULL, @json_object NVARCHAR(MAX) = NULL
-        ///)
-        ///--WITH EXECUTE AS OWNER, SCHEMABINDING, NATIVE_COMPILATION
-        ///AS
-        ///BEGIN --ATOMIC WITH (TRANSACTION ISOLATION LEVEL = SNAPSHOT, LANGUAGE = [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string usp_insert_eventlog_sql {
-            get {
-                return ResourceManager.GetString("usp_insert_eventlog_sql", resourceCulture);
+                return ResourceManager.GetString("usp_insert_eventlog_context", resourceCulture);
             }
         }
         
@@ -181,9 +181,9 @@ namespace ServiceLibrary.DbModels.Log.Sql {
         ///	--(
         ///	--	SELECT DISTINCT(s.Address) AS Address, [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string vw_sourceaddresses_sql {
+        internal static string vw_sourceaddresses {
             get {
-                return ResourceManager.GetString("vw_sourceaddresses_sql", resourceCulture);
+                return ResourceManager.GetString("vw_sourceaddresses", resourceCulture);
             }
         }
     }

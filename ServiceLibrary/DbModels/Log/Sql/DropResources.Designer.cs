@@ -61,47 +61,47 @@ namespace ServiceLibrary.DbModels.Log.Sql {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DROP FUNCTION Log.fn_select_eventlog_context;.
-        /// </summary>
-        internal static string fn_select_eventlog_context_sql {
-            get {
-                return ResourceManager.GetString("fn_select_eventlog_context_sql", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to DROP FUNCTION Log.fn_select_eventlog;.
         /// </summary>
-        internal static string fn_select_eventlog_sql {
+        internal static string fn_select_eventlog {
             get {
-                return ResourceManager.GetString("fn_select_eventlog_sql", resourceCulture);
+                return ResourceManager.GetString("fn_select_eventlog", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DROP PROCEDURE Log.usp_insert_eventlog_context;.
+        ///   Looks up a localized string similar to DROP FUNCTION Log.fn_select_eventlog_context;.
         /// </summary>
-        internal static string usp_insert_eventlog_context_sql {
+        internal static string fn_select_eventlog_context {
             get {
-                return ResourceManager.GetString("usp_insert_eventlog_context_sql", resourceCulture);
+                return ResourceManager.GetString("fn_select_eventlog_context", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to DROP PROCEDURE Log.usp_insert_eventlog;.
         /// </summary>
-        internal static string usp_insert_eventlog_sql {
+        internal static string usp_insert_eventlog {
             get {
-                return ResourceManager.GetString("usp_insert_eventlog_sql", resourceCulture);
+                return ResourceManager.GetString("usp_insert_eventlog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DROP PROCEDURE Log.usp_insert_eventlog_context;.
+        /// </summary>
+        internal static string usp_insert_eventlog_context {
+            get {
+                return ResourceManager.GetString("usp_insert_eventlog_context", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to DROP VIEW Log.vw_sourceaddresses;.
         /// </summary>
-        internal static string vw_sourceaddresses_sql {
+        internal static string vw_sourceaddresses {
             get {
-                return ResourceManager.GetString("vw_sourceaddresses_sql", resourceCulture);
+                return ResourceManager.GetString("vw_sourceaddresses", resourceCulture);
             }
         }
     }

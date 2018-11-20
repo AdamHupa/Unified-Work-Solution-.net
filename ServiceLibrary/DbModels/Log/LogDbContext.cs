@@ -29,11 +29,7 @@ namespace ServiceLibrary.DbModels.Log
         }
 
         public LogDbContext()
-            : base("")
-        {
-            throw new NotImplementedException();
-        }
-        //: base(ServiceLibrary.Properties.Settings.Default.RelativeDefaultConnectionString) { }
+            : base(ServiceLibrary.Properties.Settings.Default.RelativeDefaultConnectionString) { }
 
         public LogDbContext(string nameOrConnectionString)
             : base(nameOrConnectionString) { }

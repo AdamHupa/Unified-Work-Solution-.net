@@ -91,7 +91,8 @@
     <Compile Include="Views\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Tools\RelayCommand.cs" />
+    <Compile Include="ViewModels\Tools\RelayCommand.cs" />
+    <Compile Include="Views\Tools\DebugDataBinding Pack.cs" />
     <Page Include="GenericControls\ResourceDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -172,6 +173,8 @@
     <Folder Include="DialogueBox\" />
     <Folder Include="Resources\Icons\" />
     <Folder Include="ServiceReferences\" />
+    <Folder Include="Views\Behaviours\SelectionConverters\" />
+    <Folder Include="Views\Converters\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 // link: https://msdn.microsoft.com/en-us/magazine/dd419663.aspx#id0090030
 // note: simplest possible implementation + CanExecuteChangedInternal
 
-namespace Client_Application.Views.Tools
+namespace Client_Application.ViewModels.Tools
 {
     public class RelayCommand : System.Windows.Input.ICommand
     {

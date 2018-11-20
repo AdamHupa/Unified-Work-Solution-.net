@@ -14,7 +14,7 @@ using ServiceLibrary.DbModels.Log.CodeFirst;
 // Enable-Migrations -ContextTypeName ServiceLibrary.DbModels.Log.LogDbContext -MigrationsDirectory DbModels\Log\Migrations
 // Add-Migration -Configuration ServiceLibrary.DbModels.Log.Migrations.Configuration Start
 // Add-Migration -Configuration ServiceLibrary.DbModels.Log.Migrations.Configuration -IgnoreChanges ManualInitialization
-// Update-Database -Configuration ServiceLibrary.DbModels.Log.Migrations.Configuration –TargetMigration 201806171434136_ManualInitialization
+// Update-Database -Configuration ServiceLibrary.DbModels.Log.Migrations.Configuration –TargetMigration 201811200003192_ManualInitialization
 
 namespace ServiceLibrary.DbModels.Log
 {

@@ -5,11 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+    This code may be DANGEROUS because it was made in mind with
+    multiple concurrent database manipulation on the same row for cases of very short peak loads only.
+    
+    Consider changing loops into delay. Use with care!!!
+ */
+
 namespace ServiceLibrary.Tools
 {
     /// <remarks>All methods utilise DbUpdateConcurrencyException and re-throws all other exceptions.</remarks>
     public static class SingleChange
     {
+        private static NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+
+
         public static async Task<bool> EnsureEntityAsync<EntityClass>(
             DbContext context, IQueryable<EntityClass> isAnyRegisteredQuery, EntityClass entityToEnsure, int maxRetryCount = 5)
             where EntityClass : class, new()
@@ -30,8 +40,10 @@ namespace ServiceLibrary.Tools
                     await context.SaveChangesAsync();
                     return true;
                 }
-                catch (Exception)
-                { }
+                catch (Exception ex)
+                {
+                    _logger.Error(ex);
+                }
 
                 ++retryCount;
 
@@ -56,8 +68,10 @@ namespace ServiceLibrary.Tools
                     await context.SaveChangesAsync();
                     return true;
                 }
-                catch (Exception)
-                { }
+                catch (Exception ex)
+                {
+                    _logger.Error(ex);
+                }
 
                 ++retryCount;
 

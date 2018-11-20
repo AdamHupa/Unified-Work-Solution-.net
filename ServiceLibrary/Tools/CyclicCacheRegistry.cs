@@ -5,12 +5,21 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
+// link: https://blogs.msdn.microsoft.com/pedram/2007/10/07/a-performance-comparison-of-readerwriterlockslim-with-readerwriterlock/
+
+/*
+    This class is an example of Rube Goldberg machine, an potentially over-complicated solution to a simple problem.
+    
+    Use with care!
+ */
+
 namespace ServiceLibrary.Tools
 {
     /// <summary>
     /// Memory cache registry with entry expiration and re-creation live cycle.
     /// </summary>
     /// <remarks>
+    /// It is intended for one-time initiation and for long-term operation.
     /// The entry live cycle handling logic is implemented using
     /// the <typeparamref name="Dictionary"/> and <typeparamref name="ReaderWriterLockSlim"/> lock,
     /// instead of <typeparamref name="ConcurrentDictionary"/> which internally uses simple locks.
@@ -498,7 +507,7 @@ namespace ServiceLibrary.Tools
         #endregion // IEnumerable<> Members
 
 
-        public class CacheRegistryLogic : IDisposable
+        private class CacheRegistryLogic : IDisposable
         {
             public TimeSpan Expiration { get; private set; }
             public ReaderWriterLockSlim Lock { get; private set; }

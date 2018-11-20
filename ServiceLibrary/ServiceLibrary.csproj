@@ -146,6 +146,7 @@
     <Compile Include="Tools\Hasher.cs" />
     <Compile Include="Tools\PartialSerializationContractResolver.cs" />
     <Compile Include="Tools\RecursiveExceptionLayoutRenderer.cs" />
+    <Compile Include="Tools\SingleChange.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

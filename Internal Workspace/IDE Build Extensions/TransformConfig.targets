@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	
+	<UsingTask TaskName="TransformXml" AssemblyFile="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Web\Microsoft.Web.Publishing.Tasks.dll" />
+	<UsingTask TaskName="MergeServiceMetadata" AssemblyFile="$(SolutionDir)Internal Workspace\IDE Build Extensions\DLL\IDEBuildExtensions.dll" /> 
+	<!--<UsingTask TaskName="ReplacePhrase"        AssemblyFile="$(SolutionDir)Internal Workspace\IDE Build Extensions\DLL\IDEBuildExtensions.dll" />-->
+	
+	
+	<PropertyGroup>
+		<AllowedReferenceRelatedFileExtensions>
+			$(AllowedReferenceRelatedFileExtensions);
+			.dll.config
+		</AllowedReferenceRelatedFileExtensions>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+		<ResolveReferencesDependsOn>
+			TransformConfig;
+			$(ResolveReferencesDependsOn)
+		</ResolveReferencesDependsOn>
+	</PropertyGroup>
+	
+	<!--Target settings - TransformConfig-->
+	<ItemGroup>
+		<!--<_AppConfigFiles Include="App.*.config" Exclude="App.config" />-->
+		<_MetadataFile Include="$(SolutionDir)Client Application\ServiceReferences\LogService.config" />
+	</ItemGroup>
+	
+	<PropertyGroup>
+		<_DatabasePath>$(SolutionDir)Internal Workspace\Database\</_DatabasePath>
+		<_IntermediateAppConfigFile>$(IntermediateOutputPath)$(TargetFileName).config</_IntermediateAppConfigFile>
+		<_MSM_ReportFile>$(IntermediateOutputPath)IDEBuildExtensions_MergeServiceMetadata.txt</_MSM_ReportFile>
+		<_SQL_Express_2012>(LocalDB)\v11.0</_SQL_Express_2012>
+		<_SQL_Express_2016>(LocalDB)\MSSQLLocalDB</_SQL_Express_2016>
+		<_VisualStudioVersion>$(VisualStudioVersion)</_VisualStudioVersion>
+	</PropertyGroup>
+	
+	
+	<Target Name="TransformConfig" BeforeTargets="_CopyAppConfigFile" >
+	<!-- BeforeTargets="_CopyAppConfigFile"  > -->
+		<!--Generate transformed App config in the intermediate directory.-->
+		<TransformXml Condition="Exists('App.$(Configuration).config')"
+					  Source="App.config"
+					  Destination="$(_IntermediateAppConfigFile)"
+					  Transform="App.$(Configuration).config" 
+					  ContinueOnError="ErrorAndStop" >
+					  <!-- OutputDirectory="$([System.IO.Path]::Combine($(OutDir), 'Configs'))" -->
+		</TransformXml>
+		<!--Or copy App config to the intermediate directory.-->
+		<Copy Condition="!Exists('App.$(Configuration).config')"
+			  SourceFiles="App.config"
+			  DestinationFiles="$(_IntermediateAppConfigFile)"
+			  OverwriteReadOnlyFiles="true"
+			  ContinueOnError="ErrorAndStop" >
+			<Output TaskParameter="CopiedFiles" ItemName="CopiedFilesToIntermediatePath" />
+		</Copy>
+		
+		
+		<Message Text="IDE Build Extensions" Importance="high" />
+		<Message Text="MergeServiceMetadata" Importance="high" />
+		<Message Text="  ├ Metadata file: %(_MetadataFile.Identity)" Importance="high" />
+		<MergeServiceMetadata MetadataFiles="@(_MetadataFile)"
+							  ReportFile="$(_MSM_ReportFile)"
+							  TargetFile="$(_IntermediateAppConfigFile)" >
+			<!--<Output TaskParameter="TargetFile" ItemName="IntermediateAppConfigFile" />-->
+		</MergeServiceMetadata>
+		<Message Text="  └ Report file  : $(_MSM_ReportFile)" Importance="high" Condition="Exists('$(_MSM_ReportFile)')" />
+		
+		
+		<!--<Message Text="ReplacePhrase" Importance="high" />
+		<ReplacePhrase Condition="'$(_VisualStudioVersion)'=='12.0'"
+					   Prefix="var"
+					   Phrase="DataSource"
+					   ReplaceWith="$(_SQL_Express_2012)"
+					   SourceFile="$(_IntermediateAppConfigFile)"
+					   TargetFile="$(_IntermediateAppConfigFile)" >
+			<Output TaskParameter="ReplaceWith" ItemName="ReplacedWith" />
+		</ReplacePhrase>
+		<ReplacePhrase Condition="'$(_VisualStudioVersion)'>='14.0'"
+					   Prefix="var"
+					   Phrase="DataSource"
+					   ReplaceWith="$(_SQL_Express_2016)"
+					   SourceFile="$(_IntermediateAppConfigFile)"
+					   TargetFile="$(_IntermediateAppConfigFile)" >
+			<Output TaskParameter="ReplaceWith" ItemName="ReplacedWith" />
+		</ReplacePhrase>
+		<Message Text="  ├ Data Source   to: @(ReplacedWith)" Importance="high" />
+		
+		<ReplacePhrase Prefix="var"
+					   Phrase="DatabasePath"
+					   ReplaceWith="$(_DatabasePath)"
+					   SourceFile="$(_IntermediateAppConfigFile)"
+					   TargetFile="$(_IntermediateAppConfigFile)" >
+		</ReplacePhrase>
+		<Message Text="  └ Database path to: $(_DatabasePath)" Importance="high" />-->
+		
+		
+		<Message Text="Output file: $(_IntermediateAppConfigFile)" Importance="high" />
+		<!--Force build process to use the transformed configuration file from now on.-->
+		<ItemGroup>
+			<AppConfigWithTargetPath Remove="App.config" />
+			<AppConfigWithTargetPath Include="$(IntermediateOutputPath)$(TargetFileName).config">
+				<TargetPath>$(TargetFileName).config</TargetPath>
+			</AppConfigWithTargetPath>
+		</ItemGroup>
+	</Target>
+	
+	
+	<Target Name="ClearIntermediateFiles" AfterTargets="Clean" >
+		<Message Text="Clearing Intermediate Files" Importance="high" />
+		<Delete TreatErrorsAsWarnings="true" Files="$(_MSM_ReportFile)" />
+		<Delete TreatErrorsAsWarnings="true" Files="$(IntermediateOutputPath)$(TargetFileName).config" />
+		<!-- ContinueOnError="WarnAndContinue" /> -->
+	</Target>
+	
+</Project>

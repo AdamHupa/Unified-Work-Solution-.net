@@ -143,6 +143,7 @@
     <Compile Include="Tools\ClientAddress.cs" />
     <Compile Include="Tools\CyclicCacheRegistry.cs" />
     <Compile Include="Tools\GlobalLogger.cs" />
+    <Compile Include="Tools\Hasher.cs" />
     <Compile Include="Tools\PartialSerializationContractResolver.cs" />
     <Compile Include="Tools\RecursiveExceptionLayoutRenderer.cs" />
   </ItemGroup>

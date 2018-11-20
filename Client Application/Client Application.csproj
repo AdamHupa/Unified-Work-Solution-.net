@@ -82,6 +82,7 @@
     <Compile Include="Resources\Localizations\LocalizationDictionaries.cs" />
     <Compile Include="Themes\ThemeDictionaries.cs" />
     <Compile Include="Tools\BindableBase.cs" />
+    <Compile Include="Tools\Other\Hasher.cs" />
     <Compile Include="Tools\ParallellyValidatableBase.cs" />
     <Compile Include="Tools\SpecialisedLocator.cs" />
     <Compile Include="Tools\ValidatableBase.cs" />

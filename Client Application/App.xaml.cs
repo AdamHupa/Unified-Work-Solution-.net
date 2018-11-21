@@ -16,6 +16,18 @@ namespace Client_Application
     public partial class App : Application
     {
         public const string GlobalAutofacRegistry = "Global AutoFac Registry";
+        public const string GlobalLogger = "Global Logger";
+
+        public static readonly NLog.Logger Logger = null; //NLog.LogManager.GetCurrentClassLogger();
+
+
+        static App()
+        {
+            NLog.LayoutRenderers.LayoutRenderer.Register(
+                Tools.RecursiveExceptionLayoutRenderer.DefaultName, typeof(Tools.RecursiveExceptionLayoutRenderer));
+
+            Logger = NLog.LogManager.GetCurrentClassLogger();
+        }
         
 
         protected override void OnStartup(StartupEventArgs e)
@@ -35,11 +47,12 @@ namespace Client_Application
                     //AppDomain.CurrentDomain.SetData(GlobalAutofacRegistry, autofacRegistry);
                     //Application.Current.Resources.Add(GlobalAutofacRegistry, autofacRegistry);
             
-                
+                if (Logger != null)
+                    App.Current.Resources.Add(GlobalLogger, Logger);
             }
             catch (Exception ex)
             {
-                
+                Logger.Error(ex, "Critical error, startup failed.");
 
                 this.Shutdown(13);
             }

@@ -84,6 +84,8 @@
     <Compile Include="Tools\BindableBase.cs" />
     <Compile Include="Tools\Other\Hasher.cs" />
     <Compile Include="Tools\ParallellyValidatableBase.cs" />
+    <Compile Include="Tools\PartialSerializationContractResolver.cs" />
+    <Compile Include="Tools\RecursiveExceptionLayoutRenderer.cs" />
     <Compile Include="Tools\SpecialisedLocator.cs" />
     <Compile Include="Tools\ValidatableBase.cs" />
     <Compile Include="Tools\ViewModelLocator.cs" />

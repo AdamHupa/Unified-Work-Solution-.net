@@ -16,7 +16,11 @@ namespace ServiceLibrary
 
         public static bool Initialization()
         {
-            throw new NotImplementedException();
+            // quick test
+            NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+            logger.Error(new Exception(DateTime.Now.ToString()), "ServiceInternalLogic_Exception");
+
+            return true;
         }
     }
 }

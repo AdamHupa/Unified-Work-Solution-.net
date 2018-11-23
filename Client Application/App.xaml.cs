@@ -57,7 +57,17 @@ namespace Client_Application
                 this.Shutdown(13);
             }
 
+
+            Logger.Info("Running client.");
+
             base.OnStartup(e);
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            Logger.Info("Terminating client.");
+
+            base.OnExit(e);
         }
     }
 }

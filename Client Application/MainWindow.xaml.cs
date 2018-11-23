@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+/*
+    svcutil.exe http://localhost:7741/UnifiedWorkSolution/Loggers/LogReceiverService /config:LogService.config /out:LogServiceProxy.cs
+ */
+
 namespace Client_Application
 {
     /// <summary>
@@ -23,6 +27,13 @@ namespace Client_Application
         public MainWindow()
         {
             InitializeComponent();
+
+
+            // quick test
+            NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+            logger.Error(new Exception(DateTime.Now.ToString()), "MainWindow_Exception");
+
+            App.Logger.Error(new Exception(DateTime.Now.ToString()), "App_Exception");
         }
     }
 }

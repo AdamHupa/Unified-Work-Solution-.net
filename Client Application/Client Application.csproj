@@ -80,6 +80,7 @@
       <DependentUpon>CultureInvariantResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Localizations\LocalizationDictionaries.cs" />
+    <Compile Include="ServiceReferences\LogServiceProxy.cs" />
     <Compile Include="Themes\ThemeDictionaries.cs" />
     <Compile Include="Tools\BindableBase.cs" />
     <Compile Include="Tools\Other\Hasher.cs" />
@@ -159,15 +160,22 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CultureInvariantResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="NLog.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="ServiceReferences\LogService.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="References.txt" />
@@ -175,7 +183,6 @@
   <ItemGroup>
     <Folder Include="DialogueBox\" />
     <Folder Include="Resources\Icons\" />
-    <Folder Include="ServiceReferences\" />
     <Folder Include="Views\Behaviours\SelectionConverters\" />
     <Folder Include="Views\Converters\" />
   </ItemGroup>

@@ -101,7 +101,10 @@ namespace Client_Application.Tools
         {
             System.Exception exception = logEvent.Exception;
             if (exception == null)
+            {
+                builder.Append("null");
                 return;
+            }
 
             if (_mode == WorkMode.ISerializable)
                 StandardExceptionSerialization(builder, exception);

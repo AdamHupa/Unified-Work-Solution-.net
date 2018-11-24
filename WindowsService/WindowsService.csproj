@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="References.txt" />
+    <Content Include="Windows Service.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ServiceLibrary\ServiceLibrary.csproj">

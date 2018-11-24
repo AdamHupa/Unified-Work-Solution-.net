@@ -1,0 +1,24 @@
+﻿
+
+Registration and activation of a given Windows Service.
+
+
+Installation and activation of Windows Service:
+
+1) Open Developer Command Prompt for Visual Studio, with Administrative privileges
+2) Type in: installutil <ServicePath><ServiceInstaller>
+3) Type in: net start <ServiceId>
+
+Deactivation and uninstalling of Windows Service:
+
+1) Open Developer Command Prompt for Visual Studio, with Administrative privileges
+2) Type in: net stop <ServiceId>
+3) Type in: installutil /u <ServicePath><ServiceInstaller>
+
+
+
+Nomenclature:
+
+<ServiceId>        - Service identification name specified in the ProjectInstaller class.
+<ServicePath>      - Path to service installer executable.
+<ServiceInstaller> - Service installer executable name with file extension.

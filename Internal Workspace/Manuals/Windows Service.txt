@@ -1,0 +1,44 @@
+﻿
+
+Registration and activation utilities for Windows Service.
+
+
+A. Installer tool
+
+To access this command-line utility one needs to open Developer Command Prompt for Visual Studio
+or should be located under the path: %WinDir%\Microsoft.NET\Framework\v4.0.<CurrentVersion>
+
+1) Open Developer Command Prompt for Visual Studio
+2) Use installutil command: installutil <command> <ServicePath><ServiceInstaller>
+
+Installation: installutil <ServicePath><ServiceInstaller>
+Uninstalling: installutil /u <ServicePath><ServiceInstaller>
+
+
+B. Windows Services tool
+
+If a Windows Service was installed correctly, it should be listed in the Services tool.
+Windows Services tool is accessible from the Command Prompt by typing: services.msc 
+or should be located under the path: C:\Windows\System32\services.msc 
+
+1) Open Services tool.
+2) Find service by Service identification name specified in the ProjectInstaller class.
+3) After selecting a given Widnows Service, one should see available options.
+
+
+C. Net system command
+
+1) Open Command Prompt with Administrative privileges.
+2) Use net command: net <command> <ServiceId>
+
+net start <ServiceId>
+net stop <ServiceId>
+
+
+
+
+Nomenclature:
+
+<ServiceId>        - Service identification name specified in the ProjectInstaller class.
+<ServicePath>      - Path to service installer executable.
+<ServiceInstaller> - Service installer executable name with file extension.
